@@ -1,0 +1,149 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
+import { whatsappLink } from "@/lib/site";
+
+export function LisCrocheSticker() {
+  return (
+    <motion.div
+      className="relative mb-2 inline-block cursor-grab active:cursor-grabbing select-none"
+      initial={{ scale: 0.8, rotate: -8, opacity: 0 }}
+      animate={{ scale: 1, rotate: -3, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 18 }}
+      whileHover={{ scale: 1.05, rotate: 0 }}
+      whileTap={{ scale: 0.95, rotate: -5 }}
+      drag
+      dragConstraints={{ left: -15, right: 15, top: -15, bottom: 15 }}
+      dragElastic={0.1}
+    >
+      {/* Borda do adesivo + Sombra de elevação */}
+      <div className="rounded-full bg-white p-2.5 shadow-[0_8px_20px_rgba(0,0,0,0.12),0_2px_4px_rgba(0,0,0,0.06)] border border-slate-100/80 transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
+        <Image
+          src="/images/lis-croche-logo.png"
+          alt="Lis Crochê — Feito com Amor, Feito à Mão"
+          width={440}
+          height={440}
+          priority
+          className="h-auto w-44 pointer-events-none md:w-60"
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+const WHATS_HREF = whatsappLink(
+  "Olá! Vim pelo site da Lis Crochê e gostaria de saber mais sobre as peças."
+);
+
+const IMAGES = [
+  "/images/croche1.webp",
+  "/images/croche2.webp",
+  "/images/croche3.jpeg",
+  "/images/insta-2.png",
+  "/images/produto-manta-geometrica.png",
+  "/images/insta-3.png",
+  "/images/produto-biquini-flor.png",
+  "/images/insta-4.png",
+  "/images/hero-croche.png",
+  "/images/insta-1.png",
+  "/images/produto-sueter-aurora.png",
+  "/images/insta-2.png",
+  "/images/produto-cesto-boho.png",
+  "/images/insta-3.png",
+  "/images/produto-manta-geometrica.png",
+  "/images/insta-4.png",
+];
+
+const squareData = IMAGES.map((src, id) => ({ id, src }));
+
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array];
+  let currentIndex = arr.length;
+  while (currentIndex !== 0) {
+    const randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [arr[currentIndex], arr[randomIndex]] = [
+      arr[randomIndex],
+      arr[currentIndex],
+    ];
+  }
+  return arr;
+}
+
+function ShuffleGrid() {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [squares, setSquares] = useState(squareData);
+
+  useEffect(() => {
+    const shuffleSquares = () => {
+      setSquares(shuffle(squareData));
+      timeoutRef.current = setTimeout(shuffleSquares, 3000);
+    };
+
+    shuffleSquares();
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <div className="grid h-[380px] grid-cols-4 grid-rows-4 gap-1.5 md:h-[470px]">
+      {squares.map((sq) => (
+        <motion.div
+          key={sq.id}
+          layout
+          transition={{ duration: 1.5, type: "spring" }}
+          className="h-full w-full rounded-lg bg-cover bg-center"
+          style={{ backgroundImage: `url(${sq.src})` }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function HeroSection() {
+  return (
+    <section
+      id="inicio"
+      className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-5 py-14 md:grid-cols-2 md:gap-12 md:px-8 md:py-20"
+    >
+      <div className="flex flex-col items-start">
+        <LisCrocheSticker />
+        <span className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent md:text-sm">
+          Peças exclusivas feitas à mão
+        </span>
+        <h1 className="text-balance font-serif text-4xl font-semibold leading-tight text-primary md:text-5xl lg:text-6xl">
+          Crochê artesanal, feito com amor para você
+        </h1>
+        <p className="my-5 max-w-md text-pretty leading-relaxed text-muted-foreground md:my-6 md:text-lg">
+          Roupas, acessórios e peças para casa, criadas uma a uma com carinho e
+          dedicação. Encomende a sua peça favorita direto pelo WhatsApp.
+        </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <a
+            href={WHATS_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            <WhatsAppIcon className="size-4" />
+            Fazer pedido no WhatsApp
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#produtos"
+            className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Ver os destaques
+          </a>
+        </div>
+      </div>
+      <ShuffleGrid />
+    </section>
+  );
+}
