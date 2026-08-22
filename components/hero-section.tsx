@@ -118,7 +118,7 @@ export function HeroSection() {
           Peças exclusivas feitas à mão
         </span>
         <h1 className="text-balance font-serif text-4xl font-semibold leading-tight text-primary md:text-5xl lg:text-6xl">
-          Crochê artesanal, feito com amor para você
+          Crochê feito com amor para você
         </h1>
         <p className="my-5 max-w-md text-pretty leading-relaxed text-muted-foreground md:my-6 md:text-lg">
           Roupas, acessórios e peças para casa, criadas uma a uma com carinho e
