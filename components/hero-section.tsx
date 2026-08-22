@@ -44,7 +44,7 @@ const IMAGES = [
   "/images/croche2.webp",
   "/images/croche3.jpeg",
   "/images/croche1.webp",
-  "/images/croche2.webp",,
+  "/images/croche2.webp",
   "/images/croche3.jpeg",
   "/images/croche1.webp",
   "/images/croche2.webp",
