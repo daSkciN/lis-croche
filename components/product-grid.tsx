@@ -21,7 +21,7 @@ const PRODUCTS = [
   {
     name: "Biquíni Flor de Lis",
     price: "R$ 120,00",
-    image: "/images/produto-biquini-flor.png",
+    image: "/images/croche1.webp",
   },
 ]
 
