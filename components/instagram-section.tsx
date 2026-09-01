@@ -1,21 +1,42 @@
-import Image from "next/image"
+import Image from "next/image";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
     </svg>
-  )
+  );
 }
 
 const FEED = [
-  { image: "/images/insta-1.png", alt: "Cliente usando top de crochê verde musgo ao ar livre" },
-  { image: "/images/insta-2.png", alt: "Novelos de fio coloridos e agulha de crochê de madeira" },
-  { image: "/images/insta-3.png", alt: "Porta-copos de flor de crochê sobre a mesa com café" },
-  { image: "/images/insta-4.png", alt: "Cantinho da casa com almofadas e manta de crochê" },
-]
+  {
+    image: "/images/bolsadiana1.jpeg",
+    alt: "Cliente usando top de crochê verde musgo ao ar livre",
+  },
+  {
+    image: "/images/bolsaminilena1.jpeg",
+    alt: "Novelos de fio coloridos e agulha de crochê de madeira",
+  },
+  {
+    image: "/images/bolsapetra2.jpeg",
+    alt: "Porta-copos de flor de crochê sobre a mesa com café",
+  },
+  {
+    image: "/images/bolsalena1.jpeg",
+    alt: "Cantinho da casa com almofadas e manta de crochê",
+  },
+];
 
 export function InstagramSection() {
   return (
@@ -23,17 +44,20 @@ export function InstagramSection() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mb-10 flex flex-col items-center text-center">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/liscroche__/"
             className="inline-flex items-center gap-2 text-lilac transition-colors hover:text-primary"
           >
             <InstagramIcon className="size-5" />
-            <span className="text-sm font-bold uppercase tracking-[0.15em]">#LisCroche</span>
+            <span className="text-sm font-bold uppercase tracking-[0.15em]">
+              #LisCroche
+            </span>
           </a>
           <h2 className="mt-3 text-balance font-serif text-3xl font-semibold text-primary md:text-4xl">
             Siga a Gente no Instagram
           </h2>
           <p className="mt-3 max-w-lg text-pretty leading-relaxed text-muted-foreground">
-            Inspire-se com nossas criações e compartilhe suas peças usando a hashtag #LisCroche.
+            Inspire-se com nossas criações e compartilhe suas peças usando a
+            hashtag #LisCroche.
           </p>
         </div>
 
@@ -41,7 +65,7 @@ export function InstagramSection() {
           {FEED.map((item, i) => (
             <a
               key={i}
-              href="https://instagram.com"
+              href="https://www.instagram.com/liscroche__/"
               className="group relative aspect-square overflow-hidden rounded-2xl"
             >
               <Image
@@ -59,5 +83,5 @@ export function InstagramSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

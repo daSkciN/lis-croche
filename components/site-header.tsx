@@ -5,12 +5,13 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { whatsappLink } from "@/lib/site"
+import { usePathname } from "next/dist/client/components/navigation"
 
 const NAV_LINKS = [
   { label: "Início", href: "#inicio" },
-  { label: "Destaques", href: "#produtos" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Destaques", href: "#destaques" },
+  { label: "Catálogo", href: "/produtos" },
+  //{ label: "Depoimentos", href: "#depoimentos" },
   { label: "Instagram", href: "#instagram" },
 ]
 
@@ -18,11 +19,13 @@ const WHATS_HREF = whatsappLink("Olá! Vim pelo site da Lis Crochê e gostaria d
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const sectionHref = (href: string) => (href.startsWith("#") && pathname !== "/" ? `/${href}` : href)
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-8">
-        <a href="#inicio" className="flex items-center" aria-label="Lis Crochê - página inicial">
+        <a href={sectionHref("#inicio")} className="flex items-center" aria-label="Lis Crochê - página inicial">
           <Image
             src="/images/lis-croche-logo.png"
             alt="Lis Crochê - Feito com Amor, Feito à Mão"
@@ -37,7 +40,7 @@ export function SiteHeader() {
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={sectionHref(link.href)}
               className="text-sm font-semibold tracking-wide text-foreground/80 transition-colors hover:text-primary"
             >
               {link.label}
@@ -73,7 +76,7 @@ export function SiteHeader() {
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
                 <a
-                  href={link.href}
+                  href={sectionHref(link.href)}
                   onClick={() => setOpen(false)}
                   className="block py-2.5 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
                 >

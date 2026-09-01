@@ -36,26 +36,26 @@ export function LisCrocheSticker() {
 }
 
 const WHATS_HREF = whatsappLink(
-  "Olá! Vim pelo site da Lis Crochê e gostaria de saber mais sobre as peças."
+  "Olá! Vim pelo site da Lis Crochê e gostaria de saber mais sobre as peças.",
 );
 
 const IMAGES = [
-  "/images/croche1.webp",
-  "/images/croche2.webp",
-  "/images/croche3.jpeg",
-  "/images/croche1.webp",
-  "/images/croche2.webp",
-  "/images/croche3.jpeg",
-  "/images/croche1.webp",
-  "/images/croche2.webp",
-  "/images/croche3.jpeg",
-  "/images/croche1.webp",
-  "/images/croche2.webp",
-  "/images/croche3.jpeg",
-  "/images/croche1.webp",
-  "/images/croche2.webp",
-  "/images/croche3.jpeg",
-  "/images/croche1.webp",
+  "/images/bolsaana1.jpeg",
+  "/images/bolsaana2.jpeg",
+  "/images/bolsaana3.jpeg",
+  "/images/bolsaaurora1.jpeg",
+  "/images/bolsaaurora2.jpeg",
+  "/images/bolsaaurora3.jpeg",
+  "/images/bolsalena1.jpeg",
+  "/images/bolsalena2.jpeg",
+  "/images/bolsalena3.jpeg",
+  "/images/bolsasafira3.jpeg",
+  "/images/bolsasafira5.jpeg",
+  "/images/bolsaminilena1.jpeg",
+  "/images/bolsaminilena2.jpeg",
+  "/images/bolsapetra1.jpeg",
+  "/images/bolsapetra2.jpeg",
+  "/images/bolsapetra3.jpeg",
 ];
 
 const squareData = IMAGES.map((src, id) => ({ id, src }));
@@ -84,7 +84,7 @@ function ShuffleGrid() {
       timeoutRef.current = setTimeout(shuffleSquares, 3000);
     };
 
-    shuffleSquares();
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -92,11 +92,14 @@ function ShuffleGrid() {
   }, []);
 
   return (
-    <div className="grid h-[380px] grid-cols-4 grid-rows-4 gap-1.5 md:h-[470px]">
+    <div
+      className="grid h-[380px] grid-cols-4 grid-rows-4 gap-1.5 md:h-[470px]"
+      style={{ overflowAnchor: "none" }}
+    >
       {squares.map((sq) => (
         <motion.div
           key={sq.id}
-          layout
+          layout="position"
           transition={{ duration: 1.5, type: "spring" }}
           className="h-full w-full rounded-lg bg-cover bg-center"
           style={{ backgroundImage: `url(${sq.src})` }}
@@ -111,6 +114,7 @@ export function HeroSection() {
     <section
       id="inicio"
       className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-5 py-14 md:grid-cols-2 md:gap-12 md:px-8 md:py-20"
+      style={{ overflowAnchor: "none" }}
     >
       <div className="flex flex-col items-start">
         <LisCrocheSticker />
@@ -118,11 +122,10 @@ export function HeroSection() {
           Peças exclusivas feitas à mão
         </span>
         <h1 className="text-balance font-serif text-4xl font-semibold leading-tight text-primary md:text-5xl lg:text-6xl">
-          Crochê feito com amor para você
+          Bolsas e acessórios de crochê
         </h1>
         <p className="my-5 max-w-md text-pretty leading-relaxed text-muted-foreground md:my-6 md:text-lg">
-          Roupas, acessórios e peças para casa, criadas uma a uma com carinho e
-          dedicação. Encomende a sua peça favorita direto pelo WhatsApp.
+          Feito para destacar o seu look. Encomende a sua peça favorita.
         </p>
         <div className="flex flex-wrap items-center gap-4">
           <a
@@ -134,12 +137,6 @@ export function HeroSection() {
             <WhatsAppIcon className="size-4" />
             Fazer pedido no WhatsApp
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </a>
-          <a
-            href="#produtos"
-            className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
-          >
-            Ver os destaques
           </a>
         </div>
       </div>

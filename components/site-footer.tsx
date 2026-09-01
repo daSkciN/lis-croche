@@ -1,6 +1,9 @@
+"use client"
+
 import Image from "next/image";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { whatsappLink } from "@/lib/site";
+import { usePathname } from "next/dist/client/components/navigation";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -43,9 +46,8 @@ const LINK_GROUPS = [
     title: "Navegação",
     links: [
       { label: "Início", href: "#inicio" },
-      { label: "Destaques", href: "#produtos" },
-      { label: "Sobre", href: "#sobre" },
-      { label: "Depoimentos", href: "#depoimentos" },
+      { label: "Destaques", href: "#destaques" },
+      { label: "Catálogo", href: "/produtos" },
     ],
   },
   {
@@ -69,6 +71,8 @@ function PinterestIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function SiteFooter() {
+  const pathname = usePathname()
+  const sectionHref = (href: string) => (href.startsWith("#") && pathname !== "/" ? `/${href}` : href)
   return (
     <footer className="border-t border-border/60 bg-card">
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8">
@@ -82,30 +86,15 @@ export function SiteFooter() {
               className="h-16 w-auto"
             />
             <p className="mt-4 max-w-xs text-pretty leading-relaxed text-muted-foreground">
-              Peças de crochê exclusivas, tecidas à mão com amor para você e seu
-              lar.
+              Peças de crochê exclusivas, tecidas à mão com amor para você.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/liscroche__/"
                 aria-label="Instagram"
                 className="rounded-full border border-border p-2.5 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <InstagramIcon className="size-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                aria-label="Facebook"
-                className="rounded-full border border-border p-2.5 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <FacebookIcon className="size-4" />
-              </a>
-              <a
-                href="https://pinterest.com"
-                aria-label="Pinterest"
-                className="rounded-full border border-border p-2.5 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <PinterestIcon className="size-4" />
               </a>
             </div>
           </div>
@@ -117,7 +106,7 @@ export function SiteFooter() {
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <a
-                      href={link.href}
+                      href={sectionHref(link.href)}
                       className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {link.label}
