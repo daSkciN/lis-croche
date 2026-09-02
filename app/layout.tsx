@@ -16,7 +16,7 @@ const nunito = Nunito({
 })
 
 export const metadata: Metadata = {
-  title: 'Lis Crochê — Peças Artesanais Feitas com Amor',
+  title: 'Lis Crochê - Peças Artesanais Feitas com Amor',
   description:
     'Peças de crochê exclusivas, feitas à mão com carinho. Roupas, acessórios e itens para casa da coleção original Lis Crochê. Feito com Amor. Feito à Mão.',
   generator: 'v0.app',

@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 
 export const metadata: Metadata = {
-  title: "Catálogo — Lis Crochê",
+  title: "Catálogo - Lis Crochê",
   description:
     "Conheça as peças artesanais da Lis Crochê e encomende pelo WhatsApp.",
 };
