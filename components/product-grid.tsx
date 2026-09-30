@@ -12,7 +12,6 @@ const PRODUCTS = [
   { name: "Bolsa Diana", price: "R$ 185,00", image: "/images/bolsadiana1.jpeg", gallery: ["/images/bolsadiana1.jpeg", "/images/bolsadiana2.jpeg", "/images/bolsadiana3.jpeg", "/images/bolsadiana4.jpeg"] },
   { name: "Bolsa Lena", price: "R$ 140,00", image: "/images/bolsalena1.jpeg", gallery: ["/images/bolsalena1.jpeg", "/images/bolsalena2.jpeg", "/images/bolsalena3.jpeg", "/images/bolsalena4.jpeg"] },
   { name: "Bolsa Mini Lena", price: "R$ 125,00", image: "/images/bolsaminilena1.jpeg", gallery: ["/images/bolsaminilena1.jpeg", "/images/bolsaminilena2.jpeg"] },
-  { name: "Bolsa Petra", price: "R$ 150,00", image: "/images/bolsapetra1.jpeg", gallery: ["/images/bolsapetra1.jpeg", "/images/bolsapetra2.jpeg", "/images/bolsapetra3.jpeg"] },
   { name: "Bolsa Safira", price: "R$ 310,00", image: "/images/bolsasafira1.jpeg", gallery: ["/images/bolsasafira1.jpeg", "/images/bolsasafira2.jpeg", "/images/bolsasafira3.jpeg", "/images/bolsasafira4.jpeg"] },
   { name: "Bolsa Kids", price: "R$ 80,00", image: "/images/bolsakids.jpeg", gallery: ["/images/bolsakids.jpeg"] },
 ]

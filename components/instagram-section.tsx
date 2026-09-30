@@ -29,7 +29,7 @@ const FEED = [
     alt: "Novelos de fio coloridos e agulha de crochê de madeira",
   },
   {
-    image: "/images/bolsapetra2.jpeg",
+    image: "/images/bolsasafira1.jpeg",
     alt: "Porta-copos de flor de crochê sobre a mesa com café",
   },
   {
